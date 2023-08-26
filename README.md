@@ -1,3 +1,3 @@
 # DeployPlex CLI
 
-DeployPLex Command Line Interface (CLI)
+DeployPlex Command Line Interface (CLI)

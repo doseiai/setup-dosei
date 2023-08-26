@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "deployplex"
+version = "0.0.1"
+description = "DeployPlex Command Line Interface (CLI)"
+authors = ["Alvaro Molina <alw3ys@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+
+[tool.poetry.scripts]
+deployplex = 'deployplex.main:cli'
+
+[tool.poetry.dependencies]
+python = "^3.11"
+click = "^8.1.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

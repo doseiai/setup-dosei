@@ -27,7 +27,7 @@ def display_table(headers, header_names, rows):
 
 
 @click.command()
-@click.option('--owner', default=None, required=False)
+@click.option('--owner', default=None, required=True)
 @click.option("--json", "json_output", is_flag=True, default=False)
 def list(owner, json_output):
     """List secrets"""

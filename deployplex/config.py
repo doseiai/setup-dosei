@@ -37,10 +37,31 @@ class Config:
             json.dump(session.model_dump(), f, indent=2)
         return True
 
-    def session_token(self) -> str:
+    def remove_stored_credentials(self) -> bool:
+        """"
+        Remove credentials file
+        """
+        os.remove(self._credentials_path)
+        return True
+
+    def session(self) -> SessionCredentials | None:
+        if os.path.isfile(self._credentials_path) is False:
+            return None
+        with open(self._credentials_path, 'r') as file:
+            credentials = SessionCredentials(**json.load(file))
+            return credentials
+
+    def session_token(self) -> str | None:
         """
         Get session token
 
         Use self.token if set, if not set, use ~/.dplex/credentials.json
         """
-        return self._token
+        if self._token:
+            return self._token
+
+        if os.path.isfile(self._credentials_path) is False:
+            return None
+        with open(self._credentials_path, 'r') as file:
+            credentials = SessionCredentials(**json.load(file))
+            return credentials.token

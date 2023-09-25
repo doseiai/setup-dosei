@@ -1,19 +1,66 @@
+import threading
+import webbrowser
 import click
+import requests
+
 from deployplex.config import Config
 from deployplex.schemas.session import SessionCredentials
+from http.server import BaseHTTPRequestHandler, HTTPServer, ThreadingHTTPServer
+from urllib.parse import urlparse, parse_qs
 
 config = Config()
-# AUTH_URL = f"https://github.com/login/oauth/authorize?client_id={config.github_client_id}&redirect_uri={config.api_base_url}/auth/github&scope=read:user,user:email"
+AUTH_URL = f"https://github.com/login/oauth/authorize?client_id={config.github_client_id}&redirect_uri=http://localhost:8085/auth/github/cli&scope=read:user,user:email"
+
+
+class AuthHandler(BaseHTTPRequestHandler):
+    succeeded = False
+
+    def log_message(self, format, *args):
+        """Override to prevent default logging."""
+        pass
+
+    def do_GET(self):
+        """Handle GET request."""
+        # Parse the request URL
+        parsed_url = urlparse(self.path)
+        if parsed_url.path == "/auth/github/cli":
+            query_params = parse_qs(parsed_url.query)
+            if 'code' in query_params:
+                # Extract the code from the callback URL
+                response = requests.get(f"{config.api_base_url}/auth/github/cli", params={"code": query_params['code'][0]})
+                config.store_token_from_session(SessionCredentials(**response.json()))
+                AuthHandler.succeeded = True
+                self.send_response(200)
+                self.send_header('Content-type', 'text/html')
+                self.end_headers()
+                self.wfile.write(b"Login Succeeded! You can close this window.")
+            else:
+                self.send_response(400)
+                self.end_headers()
+                self.wfile.write(b"Authentication failed!")
+            # Shut down the server
+            self.server.shutdown()
 
 
 @click.command()
 def login():
     """Authenticate with a DeployPlex"""
-    raise click.ClickException("Not implemented, use DEPLOYPLEX_TOKEN env variable instead.")
+    # Spin up an HTTP server
+    server = ThreadingHTTPServer(('localhost', 8085), AuthHandler)
+
+    # Use a separate thread to run the server
+    server_thread = threading.Thread(target=server.serve_forever)
+    server_thread.start()
 
     # Open the browser for authentication
-    # webbrowser.open(AUTH_URL)
+    webbrowser.open(AUTH_URL)
 
-    # Store the access token in the credentials file
-    config.store_token_from_session(SessionCredentials(id="id_value", token="token_value", refresh_token="dff"))
-    click.echo("Login Succeeded!")
+    click.echo(f"Your browser has been opened to visit:\n\n{AUTH_URL}\n")
+
+    # Wait for the server thread to finish (i.e., when the server shuts down)
+    server_thread.join()
+
+    if AuthHandler.succeeded:
+        click.echo("Login Succeeded!")
+    else:
+        click.echo("Login Failed!")

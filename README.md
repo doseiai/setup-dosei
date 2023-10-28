@@ -42,11 +42,9 @@ steps:
     uses: actions/checkout@v3
 
   - name: Setup dctl CLI
-    uses: deployplex/dctl@0.0.11
+    uses: deployplex/dctl@0.0.12
     with:
       token: ${{ secrets.DEPLOYPLEX_TOKEN }}
-      # https://pypi.org/project/dctl/#history version. (Not required); Defaults to `latest` if not provided
-      cli-version: latest
 ```
 
 ## Learn more

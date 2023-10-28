@@ -1,0 +1,24 @@
+name: "Setup dctl"
+description: 'Setup dctl (DeployPlex CLI) in your Github Actions workflow.'
+author: DeployPlex
+
+branding:
+  icon: 'box'
+  color: 'black'
+
+inputs:
+  token:
+    description: 'Your DeployPlex token.'
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - run: python3 -m pip install dctl==0.0.11
+      shell: bash
+    - run: echo "DEPLOYPLEX_TOKEN=${{ inputs.token }}" >> $GITHUB_ENV
+      if: ${{ inputs.token }}
+      shell: bash

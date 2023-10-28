@@ -23,9 +23,30 @@ Login into deployplex to start using the CLI:
 dctl login
 ```
 
-Alternatively you can use a deployplex token generated from the console and set it as an environment variable.
+Alternatively you can use a deployplex token generated from the dashboard and set it as an environment variable.
 ```bash
 export DEPLOYPLEX_TOKEN="you_deployplex_token"
+```
+
+## Usage
+
+On the terminal
+```bash
+dctl --help
+```
+
+On Github Actions
+```yaml
+steps:
+  - name: Checkout Repository
+    uses: actions/checkout@v3
+
+  - name: Setup dctl CLI
+    uses: deployplex/dctl@0.0.11
+    with:
+      token: ${{ secrets.DEPLOYPLEX_TOKEN }}
+      # https://pypi.org/project/dctl/#history version. (Not required); Defaults to `latest` if not provided
+      cli-version: latest
 ```
 
 ## Learn more

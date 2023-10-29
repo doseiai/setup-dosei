@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dctl"
-version = "0.0.12"
+version = "0.0.13"
 description = "Command Line Interface (CLI) for DeployPlex"
 authors = ["Alvaro Molina <am@deployplex.com>"]
 license = "Apache-2.0"

@@ -42,7 +42,7 @@ steps:
     uses: actions/checkout@v3
 
   - name: Setup dctl CLI
-    uses: deployplex/dctl@0.0.12
+    uses: deployplex/dctl@0.0.13
     with:
       token: ${{ secrets.DEPLOYPLEX_TOKEN }}
 ```

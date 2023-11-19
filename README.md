@@ -49,7 +49,7 @@ steps:
 
 ## Learn more
 
-The best place to get started is following our getting started guide on the [Dosei CLI Documentation](https://docs.docei.ai/cli).
+The best place to get started is following our getting started guide on the [Dosei CLI Documentation](https://docs.dosei.ai/cli).
 
 ## LICENSE
 

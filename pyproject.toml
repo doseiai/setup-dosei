@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "dctl"
-version = "0.0.13"
-description = "Command Line Interface (CLI) for DeployPlex"
-authors = ["Alvaro Molina <am@deployplex.com>"]
+version = "0.0.15"
+description = "Command Line Interface (CLI) for Dosei"
+authors = ["Alvaro Molina <am@dosei.ai>"]
 license = "Apache-2.0"
 readme = "README.md"
 

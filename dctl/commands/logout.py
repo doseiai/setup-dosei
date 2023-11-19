@@ -9,7 +9,7 @@ config = Config()
 
 @click.command()
 def logout():
-    """Remove Authentication with a DeployPlex"""
+    """Remove Authentication with a Dosei"""
     session = config.session()
     headers = {**get_auth_header()}
     url = f"{config.api_base_url}/auth/logout"

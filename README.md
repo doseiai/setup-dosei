@@ -1,11 +1,11 @@
 # dctl
 
-`dctl` is the Command Line Interface (CLI) for DeployPlex.
+`dctl` is the Command Line Interface (CLI) for Dosei.
 
 [![pypi version](https://img.shields.io/pypi/v/dctl.svg)](https://pypi.org/pypi/dctl/)
 [![Downloads](https://static.pepy.tech/badge/dctl/week)](https://pypi.org/pypi/dctl/)
 [![License: MIT](https://img.shields.io/badge/license-Apache--2.0-yellow)](https://www.apache.org/licenses/LICENSE-2.0)
-[![Twitter](https://img.shields.io/twitter/url/https/x.com/dctl.svg?style=social&label=Follow%20%40deployplex)](https://x.com/deployplex)
+[![Twitter](https://img.shields.io/twitter/url/https/x.com/dctl.svg?style=social&label=Follow%20%40dosei_ai)](https://x.com/dosei_ai)
 [![](https://dcbadge.vercel.app/api/server/BP5aUkhcAh?compact=true&style=flat)](https://discord.com/invite/BP5aUkhcAh)
 
 ## Getting Started
@@ -18,14 +18,14 @@ You can install and configure dctl using this command:
 pip install -U dctl
 ```
 
-Login into deployplex to start using the CLI:
+Login into dosei to start using the CLI:
 ```bash
 dctl login
 ```
 
-Alternatively you can use a deployplex token generated from the dashboard and set it as an environment variable.
+Alternatively you can use a Dosei token generated from the dashboard and set it as an environment variable.
 ```bash
-export DEPLOYPLEX_TOKEN="you_deployplex_token"
+export DOSEI_TOKEN="you_dosei_token"
 ```
 
 ## Usage
@@ -42,14 +42,14 @@ steps:
     uses: actions/checkout@v3
 
   - name: Setup dctl CLI
-    uses: deployplex/dctl@0.0.13
+    uses: dosei/dctl@0.0.13
     with:
-      token: ${{ secrets.DEPLOYPLEX_TOKEN }}
+      token: ${{ secrets.DOSEI_TOKEN }}
 ```
 
 ## Learn more
 
-The best place to get started is following our getting started guide on the [DeployPlex CLI Documentation](https://docs.deployplex.com/cli).
+The best place to get started is following our getting started guide on the [Dosei CLI Documentation](https://docs.docei.ai/cli).
 
 ## LICENSE
 

@@ -42,7 +42,7 @@ steps:
     uses: actions/checkout@v3
 
   - name: Setup dctl CLI
-    uses: dosei/dctl@0.0.13
+    uses: doseiai/dctl@0.0.16
     with:
       token: ${{ secrets.DOSEI_TOKEN }}
 ```

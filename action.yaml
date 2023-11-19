@@ -1,6 +1,6 @@
 name: "Setup dctl"
-description: 'Setup dctl (DeployPlex CLI) in your Github Actions workflow.'
-author: DeployPlex
+description: 'Setup dctl (Dosei CLI) in your Github Actions workflow.'
+author: doseiai
 
 branding:
   icon: 'box'
@@ -8,7 +8,7 @@ branding:
 
 inputs:
   token:
-    description: 'Your DeployPlex token.'
+    description: 'Your Dosei token.'
     required: false
 
 runs:
@@ -19,6 +19,6 @@ runs:
         python-version: '3.11'
     - run: python3 -m pip install dctl==0.0.13
       shell: bash
-    - run: echo "DEPLOYPLEX_TOKEN=${{ inputs.token }}" >> $GITHUB_ENV
+    - run: echo "DOSEI_TOKEN=${{ inputs.token }}" >> $GITHUB_ENV
       if: ${{ inputs.token }}
       shell: bash

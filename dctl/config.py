@@ -16,10 +16,10 @@ class Config:
         if self._initialized:
             return
 
-        self._credentials_path = os.path.expanduser('~/.deployplex/credentials.json')
-        self._token = os.getenv("DEPLOYPLEX_TOKEN")
+        self._credentials_path = os.path.expanduser('~/.dosei/credentials.json')
+        self._token = os.getenv("DOSEI_TOKEN")
 
-        self.api_base_url = os.getenv("API_BASE_URL", "https://api.deployplex.com")
+        self.api_base_url = os.getenv("API_BASE_URL", "https://api.dosei.ai")
         self.github_client_id = "Iv1.0d2388105db85287"
 
         self._initialized = True
@@ -55,7 +55,7 @@ class Config:
         """
         Get session token
 
-        Use self.token if set, if not set, use ~/.dplex/credentials.json
+        Use self.token if set, if not set, use ~/.dosei/credentials.json
         """
         if self._token:
             return self._token

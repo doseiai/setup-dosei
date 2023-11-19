@@ -12,7 +12,7 @@ config = Config()
 @click.command()
 @click.option('--owner', default=None, required=True)
 def logs(owner):
-    """Stream project logs from DeployPlex"""
+    """Stream project logs from Dosei"""
     auth_header = get_auth_header()
     params = owner_params(owner)
     url = f"{config.api_base_url}/projects/{params['owner_name']}/{params['project_name']}/logs/stream"

@@ -31,7 +31,7 @@ class AuthHandler(BaseHTTPRequestHandler):
                 config.store_token_from_session(SessionCredentials(**response.json()))
                 AuthHandler.succeeded = True
                 self.send_response(302)
-                self.send_header('Location', 'https://deployplex.com/login/cli')
+                self.send_header('Location', 'https://dosei.ai/login/cli')
                 self.end_headers()
             else:
                 self.send_response(400)
@@ -43,7 +43,7 @@ class AuthHandler(BaseHTTPRequestHandler):
 
 @click.command()
 def login():
-    """Authenticate with a DeployPlex"""
+    """Authenticate with a Dosei"""
     # Spin up an HTTP server
     server = ThreadingHTTPServer(('localhost', 8085), AuthHandler)
 

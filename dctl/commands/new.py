@@ -31,7 +31,7 @@ class TemplateType(Enum):
 def new(template, name):
     """New project"""
     headers = {**get_auth_header()}
-    url = f"{config.api_base_url}/projects/test/clone"
+    url = f"{config.api_base_url}/projects/clone"
     response = requests.post(url, headers=headers, json={
         "name": name,
         **TemplateType[template.upper()].value.model_dump()

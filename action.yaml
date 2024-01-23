@@ -17,7 +17,7 @@ runs:
     - uses: actions/setup-python@v4
       with:
         python-version: '3.11'
-    - run: python3 -m pip install dctl==0.0.16
+    - run: python3 -m pip install dctl==0.0.17
       shell: bash
     - run: echo "DOSEI_TOKEN=${{ inputs.token }}" >> $GITHUB_ENV
       if: ${{ inputs.token }}

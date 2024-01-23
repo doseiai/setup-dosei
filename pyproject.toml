@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dctl"
-version = "0.0.16"
+version = "0.0.17"
 description = "Command Line Interface (CLI) for Dosei"
 authors = ["Alvaro Molina <am@dosei.ai>"]
 license = "Apache-2.0"

@@ -13,7 +13,7 @@ def logout():
     session = config.session()
     headers = {**get_auth_header()}
     url = f"{config.api_base_url}/auth/logout"
-    # TODO: Fix, seems like isn't working.
-    requests.delete(url, headers=headers, params={"session_id": session.id})
+    request = requests.delete(url, headers=headers, params={"session_id": session.id})
+    request.raise_for_status()
     config.remove_stored_credentials()
     click.echo("Logout Succeeded!")

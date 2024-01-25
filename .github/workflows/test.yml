@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: 'test ${{ matrix.target }}'
+    name: 'test ${{ matrix.os }}'
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]

@@ -10,7 +10,7 @@ steps:
     uses: actions/checkout@v3
 
   - name: Setup dctl CLI
-    uses: doseiai/setup-dctl@v0.0.1
+    uses: doseiai/setup-dctl@v0.0.18
     with:
       token: ${{ secrets.DOSEI_TOKEN }}
 ```

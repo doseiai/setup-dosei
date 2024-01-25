@@ -21,4 +21,4 @@ jobs:
         uses: ./
 
       - name: Test dctl
-        run: /home/runner/.dosei/bin/dctl --version
+        run: dctl --version

@@ -18,7 +18,7 @@ runs:
       shell: bash
     - run: |
         echo "DOSEI_CLI_INSTALL=/home/runner/.dosei" >> $GITHUB_ENV
-        echo "PATH=$DOSEI_CLI_INSTALL/bin:$PATH" >> $GITHUB_ENV
+        echo "$DOSEI_CLI_INSTALL/bin" >> $GITHUB_PATH
       shell: bash
     - run: echo "DOSEI_TOKEN=${{ inputs.token }}" >> $GITHUB_ENV
       if: ${{ inputs.token }}

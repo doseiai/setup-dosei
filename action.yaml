@@ -14,8 +14,20 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: curl -fsSL https://dosei.ai/install.sh | sh
+    - run: |
+        curl -fsSL https://dosei.ai/install.sh | sh
+        if [ "$RUNNER_OS" == "Linux" ]; then
+          echo "/home/runner/.dosei/bin" >> $GITHUB_PATH
+        elif [ "$RUNNER_OS" == "macOS" ]; then
+          echo "/Users/runner/.dosei/bin" >> $GITHUB_PATH
+        fi
       shell: bash
+      if: runner.os != 'Windows'
+    - run: |
+        irm https://dosei.ai/install.ps1 | iex
+        Add-Content $env:GITHUB_PATH "$env:USERPROFILE\.dosei\bin"
+      shell: pwsh
+      if: runner.os == 'Windows'
     - run: echo "DOSEI_TOKEN=${{ inputs.token }}" >> $GITHUB_ENV
       if: ${{ inputs.token }}
       shell: bash

@@ -1,4 +1,4 @@
-name: "Setup dctl"
+name: "Setup Dosei CLI"
 description: 'Setup dctl (Dosei CLI) in your Github Actions workflow.'
 author: doseiai
 

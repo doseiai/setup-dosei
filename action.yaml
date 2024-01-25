@@ -14,10 +14,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-    - run: python3 -m pip install dctl==0.0.18
+    - run: curl -fsSL https://dosei.ai/install.sh | sh
       shell: bash
     - run: echo "DOSEI_TOKEN=${{ inputs.token }}" >> $GITHUB_ENV
       if: ${{ inputs.token }}

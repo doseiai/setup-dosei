@@ -25,7 +25,7 @@ runs:
       if: runner.os != 'Windows'
     - run: |
         irm https://dosei.ai/install.ps1 | iex
-        echo "$env:USERPROFILE\.dosei\bin" >> $GITHUB_PATH
+        Add-Content $env:GITHUB_PATH "$env:USERPROFILE\.dosei\bin"
       shell: pwsh
       if: runner.os == 'Windows'
     - run: echo "DOSEI_TOKEN=${{ inputs.token }}" >> $GITHUB_ENV

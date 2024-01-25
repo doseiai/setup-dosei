@@ -14,8 +14,9 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - run: curl -fsSL https://dosei.ai/install.sh | sh
+      shell: bash
     - run: |
-        curl -fsSL https://dosei.ai/install.sh | sh
         echo "DOSEI_CLI_INSTALL=/home/runner/.dosei" >> $GITHUB_ENV
         echo "PATH=$DOSEI_CLI_INSTALL/bin:$PATH" >> $GITHUB_ENV
       shell: bash

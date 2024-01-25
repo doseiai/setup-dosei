@@ -16,7 +16,11 @@ runs:
   steps:
     - run: |
         curl -fsSL https://dosei.ai/install.sh | sh
-        echo "/home/runner/.dosei/bin" >> $GITHUB_PATH
+        if [ "$RUNNER_OS" == "Linux" ]; then
+          echo "/home/runner/.dosei/bin" >> $GITHUB_PATH
+        elif [ "$RUNNER_OS" == "macOS" ]; then
+          echo "/Users/runner/.dosei/bin" >> $GITHUB_PATH
+        fi
       shell: bash
     - run: echo "DOSEI_TOKEN=${{ inputs.token }}" >> $GITHUB_ENV
       if: ${{ inputs.token }}
